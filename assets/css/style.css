@@ -103,6 +103,14 @@ main {
   cursor: pointer;
 }
 
+.form-section .field i img {
+  position: absolute;
+  width: 18px;
+  right: 0px;
+  bottom: 0px;
+}
+
+
 .form-section .field input:focus {
   border-color: var(--purpleHover);
   outline: none;
@@ -179,6 +187,10 @@ a:hover {
   border: 6px solid #fff;
   border-color: #fff transparent #fff transparent;
   animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.hidden {
+  display: none;
 }
 
 @keyframes lds-dual-ring {

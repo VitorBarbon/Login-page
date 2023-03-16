@@ -1,15 +1,17 @@
-function toggleButtonPassword (isVisible, classHtml, element) {
+function toggleButtonPassword (isVisible) {
   const inputPassword = document.querySelector('#password-field')
+  const buttonVisible = document.querySelector('.eye-solid') 
+  const buttonHidden = document.querySelector('.eye-low-vision')
 
   switch(isVisible) {
     case 'visible': 
-      element.classList.remove(classHtml)
-      element.classList.add(`${classHtml}-low-vision`)
+      buttonVisible.classList.add('hidden')
+      buttonHidden.classList.remove('hidden')  
       inputPassword.type = 'text'
       break 
     case 'hidden':
-      element.classList.remove(classHtml)
-      element.classList.add(classHtml.slice(0, -11))
+      buttonHidden.classList.add('hidden')
+      buttonVisible.classList.remove('hidden')
       inputPassword.type = 'password'
       break
   }
@@ -53,10 +55,11 @@ function handleValidate(element) {
   document.addEventListener('click', (event) => {
     event.preventDefault()
     const element = event.target
+    console.log(element)
 
-    if(element.classList.contains('fa-eye')) return toggleButtonPassword('visible', 'fa-eye', element)
+    if(element.classList.contains('eye-solid')) return toggleButtonPassword('visible')
 
-    if(element.classList.contains('fa-eye-low-vision')) return toggleButtonPassword('hidden', 'fa-eye-low-vision', element)
+    if(element.classList.contains('eye-low-vision')) return toggleButtonPassword('hidden')
     
     if(element.classList.contains('btn-submit')) {
       if(!handleValidate(element)) return
